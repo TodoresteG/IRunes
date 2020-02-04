@@ -1,0 +1,20 @@
+﻿<hr class="bg-success" style="height: 2px" />
+<main class="jumbotron text-white bg-success">
+    @if (User.Identity.IsAuthenticated == false)
+    {
+        <div>
+            <h1>Welcome to IRunes</h1>
+            <hr class="bg-white" style="height: 2px" />
+            <h2><a class="text-warning" href="/Users/Login">Login</a> if you have an account.</h2>
+            <h2><a class="text-warning" href="/Users/Register">Register</a> if you don't.</h2>
+        </div>
+    }
+    else
+    {
+    <div>
+        <h1>Welcome, <span class="text-warning">@User.Identity.Name</span></h1>
+        <hr class="bg-white" style="height: 2px" />
+        <h2>IRunes wishes you a fun experience.</h2>
+    </div>
+    }
+</main>

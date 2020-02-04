@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.113" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\IRunes.Data.Common\IRunes.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\IRunes.Data.Models\IRunes.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\IRunes.Web.ViewModels\IRunes.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\IRunes.Services.Mapping\IRunes.Services.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>
