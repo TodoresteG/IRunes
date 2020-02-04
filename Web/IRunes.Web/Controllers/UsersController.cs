@@ -51,7 +51,7 @@
         }
 
         [HttpPost]
-        public IActionResult Register(UserRegisterInputModel userRegister)
+        public async Task<IActionResult> Register(UserRegisterInputModel userRegister)
         {
             if (userRegister.Password != userRegister.ConfirmPassword)
             {
@@ -65,8 +65,7 @@
                 Email = userRegister.Email,
             };
 
-            this.userService.CreateUser(user);
-
+            await this.userService.CreateUserAsync(user);
             return this.Redirect("/Users/Login");
         }
 

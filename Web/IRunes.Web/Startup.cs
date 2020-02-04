@@ -12,7 +12,6 @@
     using IRunes.Services.Mapping;
     using IRunes.Services.Messaging;
     using IRunes.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;

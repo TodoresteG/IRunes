@@ -6,7 +6,7 @@
 
     public interface IUserService
     {
-        Task<ApplicationUser> CreateUser(ApplicationUser user);
+        Task CreateUserAsync(ApplicationUser user);
 
         ApplicationUser GetUserByUsernameAndPassword(string username, string password);
     }

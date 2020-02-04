@@ -4,22 +4,22 @@
 
     using IRunes.Data.Common.Repositories;
     using IRunes.Data.Models;
+    using Microsoft.AspNetCore.Identity;
 
     public class UserService : IUserService
     {
         private readonly IUserRepository<ApplicationUser> userRepository;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public UserService(IUserRepository<ApplicationUser> userRepository)
+        public UserService(IUserRepository<ApplicationUser> userRepository, UserManager<ApplicationUser> userManager)
         {
             this.userRepository = userRepository;
+            this.userManager = userManager;
         }
 
-        public async Task<ApplicationUser> CreateUser(ApplicationUser user)
+        public async Task CreateUserAsync(ApplicationUser user)
         {
-            await this.userRepository.AddAsync(user);
-            await this.userRepository.SaveChangesAsync();
-
-            return user;
+            await this.userManager.CreateAsync(user);
         }
 
         public ApplicationUser GetUserByUsernameAndPassword(string username, string password)
