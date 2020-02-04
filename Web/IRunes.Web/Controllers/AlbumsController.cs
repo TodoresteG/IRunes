@@ -23,7 +23,7 @@
         [Authorize]
         public async Task<IActionResult> All()
         {
-            ICollection<AlbumAllViewModel> allAlbums = await this.albumService.GetAllAlbums<AlbumAllViewModel>();
+            ICollection<AlbumAllViewModel> allAlbums = await this.albumService.GetAllAlbumsAsync<AlbumAllViewModel>();
 
             // Presentation logic not bussiness logic
             if (allAlbums.Count != 0)
@@ -60,7 +60,7 @@
                 Cover = albumFromDb.Cover,
                 Name = albumFromDb.Name,
                 Price = albumFromDb.Price.ToString(),
-                Tracks = albumFromDb.Tracks.Select(t => new AlbumDetailsTrackViewModel 
+                Tracks = albumFromDb.Tracks.Select(t => new AlbumDetailsTrackViewModel
                 {
                     Id = t.Id,
                     Name = t.Name,

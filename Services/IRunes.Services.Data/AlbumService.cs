@@ -20,7 +20,7 @@
             this.albumRepository = albumRepository;
         }
 
-        public async Task<bool> AddTrackToAlbum(string albumId, Track track)
+        public async Task<bool> AddTrackToAlbumAsync(string albumId, Track track)
         {
             Album albumFromDb = await this.GetAlbumByIdAsync(albumId);
 
@@ -57,19 +57,12 @@
             return await this.albumRepository.GetByIdWithDeletedAsync(id);
         }
 
-        public async Task<ICollection<T>> GetAllAlbums<T>()
+        public async Task<ICollection<T>> GetAllAlbumsAsync<T>()
         {
             return await this.albumRepository
                 .AllAsNoTracking()
                 .To<T>()
                 .ToArrayAsync();
-        }
-
-        public async Task<T> GetAlbumDetailsAsync<T>(string id)
-        {
-            var albumFromDb = await this.GetAlbumByIdAsync(id);
-
-            throw new NotImplementedException();
         }
     }
 }

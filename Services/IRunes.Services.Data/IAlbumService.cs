@@ -10,12 +10,10 @@
     {
         Task CreateAlbumAsync(CreateAlbumInputModel createAlbum);
 
-        Task<bool> AddTrackToAlbum(string albumId, Track track);
+        Task<bool> AddTrackToAlbumAsync(string albumId, Track track);
 
-        Task<ICollection<T>> GetAllAlbums<T>();
+        Task<ICollection<T>> GetAllAlbumsAsync<T>();
 
         Task<Album> GetAlbumByIdAsync(string id);
-
-        Task<T> GetAlbumDetailsAsync<T>(string id);
     }
 }
