@@ -8,12 +8,14 @@
 
     public interface IAlbumService
     {
-        Task CreateAlbum(CreateAlbumInputModel createAlbum);
+        Task CreateAlbumAsync(CreateAlbumInputModel createAlbum);
 
         Task<bool> AddTrackToAlbum(string albumId, Track track);
 
         Task<ICollection<T>> GetAllAlbums<T>();
 
-        Task<Album> GetAlbumById(string id);
+        Task<Album> GetAlbumByIdAsync(string id);
+
+        Task<T> GetAlbumDetailsAsync<T>(string id);
     }
 }

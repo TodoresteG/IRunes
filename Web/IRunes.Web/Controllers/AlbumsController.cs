@@ -42,26 +42,37 @@
 
         [Authorize]
         [HttpPost]
-        public IActionResult Create(CreateAlbumInputModel createAlbum)
+        public async Task<IActionResult> Create(CreateAlbumInputModel createAlbum)
         {
-            this.albumService.CreateAlbum(createAlbum);
+            await this.albumService.CreateAlbumAsync(createAlbum);
 
             return this.Redirect("/Albums/All");
         }
 
-        //[Authorize]
-        //public IActionResult Details(string id)
-        //{
-        //    var albumFromDb = this.albumService.GetAlbumById(id);
+        [Authorize]
+        public async Task<IActionResult> Details(string id)
+        {
+            var albumFromDb = await this.albumService.GetAlbumByIdAsync(id);
 
-        //    AlbumDetailsViewModel albumDetailsViewModel = ModelMapper.ProjectTo<AlbumDetailsViewModel>(albumFromDb);
+            AlbumDetailsViewModel albumDetailsViewModel = new AlbumDetailsViewModel
+            {
+                Id = albumFromDb.Id,
+                Cover = albumFromDb.Cover,
+                Name = albumFromDb.Name,
+                Price = albumFromDb.Price.ToString(),
+                Tracks = albumFromDb.Tracks.Select(t => new AlbumDetailsTrackViewModel 
+                {
+                    Id = t.Id,
+                    Name = t.Name,
+                }).ToList(),
+            };
 
-        //    if (albumFromDb == null)
-        //    {
-        //        return this.Redirect("/Albums/All");
-        //    }
+            if (albumFromDb == null)
+            {
+                return this.Redirect("/Albums/All");
+            }
 
-        //    return this.View(albumDetailsViewModel);
-        //}
+            return this.View(albumDetailsViewModel);
+        }
     }
 }
