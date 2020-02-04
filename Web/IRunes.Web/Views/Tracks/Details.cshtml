@@ -1,0 +1,19 @@
+﻿@using IRunes.Web.ViewModels.Tracks.ViewModels;
+@model TrackDetailsViewModel
+
+<hr class="bg-success" style="height: 2px" />
+<main class="row justify-content-md-center">
+    <div class="col-lg-6 text-center">
+        <h1>Track Name: @Model.Name</h1>
+        <h1>Track Price: @Model.Price</h1>
+        <hr class="bg-success" style="height: 2px" />
+        <iframe width="750" height="400" src="@Model.Link">
+        </iframe>
+        <hr class="bg-success" style="height: 2px" />
+    </div>
+    <div class="col-lg-12 text-center">
+        <hr style="height: 2px" />
+        <a class="btn btn-success" href="/Albums/Details?id=@Model.AlbumId">Back To Album</a>
+    </div>
+</main>
+

@@ -54,7 +54,7 @@
 
         public async Task<Album> GetAlbumByIdAsync(string id)
         {
-            return await this.albumRepository.GetByIdWithDeletedAsync(id);
+            return await this.albumRepository.All().Include(t => t.Tracks).FirstOrDefaultAsync(t => t.Id == id);
         }
 
         public async Task<ICollection<T>> GetAllAlbumsAsync<T>()

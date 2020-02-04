@@ -61,6 +61,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IAlbumService, AlbumService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ITrackService, TrackService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

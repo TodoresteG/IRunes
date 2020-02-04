@@ -1,0 +1,31 @@
+﻿@using IRunes.Web.ViewModels.Tracks.ViewModels
+@model TrackCreateViewModel
+
+<hr class="bg-success" style="height: 2px" />
+<div class="row justify-content-md-center">
+    <main class="col-lg-6">
+        <h1 class="text-center text-success">Create Track</h1>
+        <hr class="bg-success" style="height: 2px" />
+        <form action="/Tracks/Create?albumId=@Model.AlbumId" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" type="text" id="name" name="name" placeholder="Name..." />
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="link">Link</label>
+                    <input class="form-control" type="text" id="link" name="link" placeholder="Link..." />
+                </div>
+                <div class="col">
+                    <label for="price">Price</label>
+                    <input class="form-control" type="text" id="price" name="price" placeholder="Price..." />
+                </div>
+            </div>
+            <hr class="bg-success" style="height: 2px" />
+            <div class="d-flex justify-content-around">
+                <button class="btn btn-success" type="submit">Create</button>
+                <a class="btn btn-success" href="/Albums/Details?albumId=@Model.AlbumId">Back To Album</a>
+            </div>
+        </form>
+    </main>
+</div>
